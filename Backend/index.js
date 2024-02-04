@@ -11,6 +11,7 @@ app.use(express.json())
 app.use(cors());
 //avilable routes
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/auth', require('./routes/Employerauth'))
 
 app.get('/', (req, res) => {
   res.send('Grads On Hire')

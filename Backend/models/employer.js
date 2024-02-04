@@ -11,7 +11,7 @@ const EmployerSchema = new Schema({
     },
     phnno:{
         type : String,
-        required : true
+        required : false
     },
     companyname:{
         type : String,
@@ -34,5 +34,5 @@ const EmployerSchema = new Schema({
         default : Date.now
     },
 });
-const Employer = mongoose.model('user',EmployerSchema);
+const Employer = mongoose.model('Employer',EmployerSchema);
 module.exports = Employer

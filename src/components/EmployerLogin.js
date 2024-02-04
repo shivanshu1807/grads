@@ -1,30 +1,30 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// const Login = (props) => {
-//     const [credentials, setCredentials] = useState({email: "", password: ""}) 
-//     let navigate = useNavigate();
+const EmployerLogin = (props) => {
+    const [credentials, setCredentials] = useState({email: "", password: ""}) 
+    let navigate = useNavigate();
 
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         const response = await fetch("http://localhost:5000/api/auth/login", {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({email: credentials.email, password: credentials.password})
-//         });
-//         const json = await response.json()
-//         console.log(json);
-//         if (json.success){
-//             // Save the auth token and redirect
-//             localStorage.setItem('token', json.authtoken); 
-//             navigate("/");
-//         }
-//         else{
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const response = await fetch("http://localhost:5000/api/auth/loginemployer", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email: credentials.email, password: credentials.password})
+        });
+        const json = await response.json()
+        console.log(json);
+        if (json.success){
+            // Save the auth token and redirect
+            localStorage.setItem('token', json.authtoken); 
+            navigate("/");
+        }
+        else{
             
-//         }
-//     }
+        }
+    }
 
     const onChange = (e)=>{
         setCredentials({...credentials, [e.target.name]: e.target.value})
@@ -47,6 +47,6 @@ import { useNavigate } from 'react-router-dom'
             </form>
         </div>
     )
+    }
 
-
-// export default Login
+export default EmployerLogin

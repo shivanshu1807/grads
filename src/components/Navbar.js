@@ -39,17 +39,18 @@ const Navbar = () => {
                         </ul>
                     </div>: null}
                     {!localStorage.getItem('token') ? <form className="d-flex">
+                    <Link className="btn btn-primary mx-1" to="/EmployerLogin" role="button">Login</Link>
+                    <Link className="btn btn-primary mx-1" to="/signup" role="button">Signup</Link>
                     <div className="btn-group">
                         <button type="button" className="btn btn-primary dropdown-toggle mx-1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Action
+                            Employer
                         </button>
                     <ul className="dropdown-menu">
-                            <li><Link className="dropdown-item" to="/EmployeeLogin">Employee Login</Link></li>
                             <li><Link className="dropdown-item" to="/EmployerLogin">Employer Login</Link></li>
+                            <li><Link className="dropdown-item" to="/EmployerSignup">Employer Signup</Link></li>
                             </ul>
                             </div>
                         {/* <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link> */}
-                        <Link className="btn btn-primary mx-1" to="/signup" role="button">Signup</Link>
                     </form> : <button onClick={handleLogout} className="btn btn-primary">Logout</button>}
                 </div>
             </div>
