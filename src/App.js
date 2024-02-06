@@ -5,23 +5,25 @@ import Signup from './components/Signup';
 import EmployeeLogin from './components/EmployeeLogin';
 import EmployerLogin from './components/EmployerLogin';
 import EmployerSignup from './components/EmployerSignup';
+import EmployerDetails from './components/EmployerDetails';
 function App() {
   return (
     <>
-        <Router>
-          <Navbar />
-          <div className="container">
-            <Routes>
-            <Route exact path="/EmployerSignup" element={<EmployerSignup/>}></Route>
-              <Route exact path="/EmployeeLogin" element={<EmployeeLogin/>}></Route>
-              <Route exact path="/EmployerLogin" element={<EmployerLogin/>}></Route>             
-              <Route exact path="/signup" element={<Signup/>}></Route>
-            </Routes>
-          </div>
-          
-        </Router>
+      <Router>
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route path="/EmployerSignup" element={<EmployerSignup />} />
+            <Route path="/EmployeeLogin" element={<EmployeeLogin />} />
+            <Route path="/EmployerLogin" element={<EmployerLogin />} />
+            <Route path="/employerdetails" element={<EmployerDetails />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
 
 export default App;
+

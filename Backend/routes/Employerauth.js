@@ -105,9 +105,9 @@ router.post('/loginemployer', [
 });
 
 // Route 3: Get logged-in employer details using POST "/api/auth/getemployer". Login required
-router.post('/getemployer', fetchuser, async (req, res) => {
+router.get('/getemployerdetails', fetchuser, async (req, res) => {
     try {
-        employerId = req.employer.id; // Make sure to use the correct property based on your fetchuser middleware
+        const employerId = req.employer.id;
         const employer = await Employer.findById(employerId).select("-password");
         res.send(employer);
     } catch (error) {
