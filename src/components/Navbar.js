@@ -109,8 +109,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/showjobs">
-                    All Jobs
+                  <Link className="dropdown-item" to="/newjob">
+                    New Job
                   </Link>
                 </li>
                 <li>

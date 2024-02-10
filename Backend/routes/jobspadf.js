@@ -6,37 +6,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 
-// router.post('/addjob', fetchemployer, [
-//   body('title', 'Enter a valid name').isLength({ min: 3 }),
-//   body('company', 'Enter a valid email'),
-//   body('state', 'Enter a valid state name').isLength({ min: 3 }),
-//   body('city', 'Enter a valid city name').isLength({ min: 3 }),
-//   body('address', 'Enter a valid phone number'),
-//   body('description', 'Enter a valid company name').isLength({ min: 20 }),
-//   body('requirements', 'Enter a valid pincode').isLength({ min: 10 }),], async (req, res) => {
-//     try {
-//       const { title, company, state, city, address, description, requirements } = req.body;
-
-//       // If there are errors, return Bad request and the errors
-//       const errors = validationResult(req);
-//       if (!errors.isEmpty()) {
-//         return res.status(400).json({ errors: errors.array() });
-//       }
-//       const newjob = new newjob({
-//         employer: req.employer.id, title, company, state, city, address, description, requirements
-//       })
-//       const savedJob = await newjob.save()
-
-//       res.json(savedJob)
-
-//     } catch (error) {
-//       console.error(error.message);
-//       res.status(500).send("Internal Server Error");
-//     }
-//   })
-
-
-
 router.post('/addjob', fetchemployer, [
   body('title', 'Enter a valid name').isLength({ min: 3 }),
   body('company', 'Enter a valid email'),
@@ -90,41 +59,41 @@ router.get('/fetchalljobs', fetchemployer, async (req, res) => {
   }
 })
 
-// // PUT /api/jobs/:jobId - Update an existing job
-// router.put('/jobs/:jobId', async (req, res) => {
-//   try {
-//     const updatedJob = await Job.findOneAndUpdate(
-//       { _id: req.params.jobId, postedBy: req.user.id }, // Make sure to replace this with the actual way you get the user ID
-//       req.body,
-//       { new: true }
-//     );
+// Update an existing job
+router.put('/jobs/:jobId', async (req, res) => {
+  try {
+    const updatedJob = await Job.findOneAndUpdate(
+      { _id: req.params.jobId, postedBy: req.user.id },
+      req.body,
+      { new: true }
+    );
 
-//     if (!updatedJob) {
-//       return res.status(404).json({ error: 'Job not found' });
-//     }
+    if (!updatedJob) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
 
-//     res.json(updatedJob);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to update job' });
-//   }
-// });
+    res.json(updatedJob);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update job' });
+  }
+});
 
-// // DELETE /api/jobs/:jobId - Delete an existing job
-// router.delete('/jobs/:jobId', async (req, res) => {
-//   try {
-//     const deletedJob = await Job.findOneAndDelete({
-//       _id: req.params.jobId,
-//       postedBy: req.user.id, // Make sure to replace this with the actual way you get the user ID
-//     });
+// Delete an existing job
+router.delete('/jobs/:jobId', async (req, res) => {
+  try {
+    const deletedJob = await Job.findOneAndDelete({
+      _id: req.params.jobId,
+      postedBy: req.user.id, 
+    });
 
-//     if (!deletedJob) {
-//       return res.status(404).json({ error: 'Job not found' });
-//     }
+    if (!deletedJob) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
 
-//     res.json(deletedJob);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to delete job' });
-//   }
-// });
+    res.json(deletedJob);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete job' });
+  }
+});
 
 module.exports = router;

@@ -28,7 +28,7 @@ const EmployeeDetails = () => {
 
     return (
         <div>
-            <h2>Employer Details</h2>
+            <h2>Employee Details</h2>
             <ul>
                 <li>Name: {employee.name}</li>
                 <li>Email: {employee.email}</li>
