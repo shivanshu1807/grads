@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require("../middleware/fetchuser");
@@ -37,7 +37,7 @@ router.post('/createuser', [
             id: user.id
         }
     }
-    JWT_SECRET = "red"
+    JWT_SECRET = "blue"
     const authtoken = jwt.sign(data, JWT_SECRET);
     // .then(user => res.json(user))
     // .catch(err => {console.log(err)
@@ -78,7 +78,7 @@ router.post('/login', [
                 id: user.id
             }
         }
-        const JWT_SECRET = "red";
+        const JWT_SECRET = "blue";
         const authtoken = jwt.sign(data, JWT_SECRET);
         success = true;
         res.json({ success, authtoken })
@@ -99,5 +99,7 @@ router.post('/login', [
             res.status(500).send("Internal server error");
         }
     })
+
+module.exports = router
 
 module.exports = router

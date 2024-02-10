@@ -1,10 +1,10 @@
 // employerRoutes.js
 const express = require('express');
 const router = express.Router();
-const Employer = require('../models/employer');
+const Employer = require('../models/Employer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const fetchuser = require("../middleware/fetchuser");
+const fetchemployer = require("../middleware/fetchemployer");
 const { body, validationResult } = require('express-validator');
 
 // Route 1: Create an Employer using POST "/api/auth/createemployer". No login required
@@ -52,7 +52,7 @@ router.post('/createemployer', [
             }
         }
 
-        const JWT_SECRET = "blue"; // Use a different secret for employer
+        const JWT_SECRET = "red"; // Use a different secret for employer
         const authtoken = jwt.sign(data, JWT_SECRET);
 
         success = true;
@@ -93,7 +93,7 @@ router.post('/loginemployer', [
             }
         }
 
-        const JWT_SECRET = "blue"; // Use a different secret for employer
+        const JWT_SECRET = "red"; // Use a different secret for employer
         const authtoken = jwt.sign(data, JWT_SECRET);
 
         success = true;
@@ -104,16 +104,16 @@ router.post('/loginemployer', [
     }
 });
 
-// Route 3: Get logged-in employer details using POST "/api/auth/getemployer". Login required
-router.get('/getemployerdetails', fetchuser, async (req, res) => {
-    try {
-        const employerId = req.employer.id;
-        const employer = await Employer.findById(employerId).select("-password");
-        res.send(employer);
+// Route to get employer details
+router.post('/getemployer', fetchemployer, async (req,res) => {
+    try{
+        employerId = req.employer.id;
+        const employer = await Employer.findById(employerId).select("-password")
+        res.json(employer)
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal server error");
     }
-});
+})
 
 module.exports = router;
