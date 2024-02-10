@@ -12,6 +12,8 @@ app.use(cors());
 //avilable routes
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/auth', require('./routes/Employerauth'))
+app.use('/api/auth', require('./routes/jobspadf'))
+app.use('/api/auth', require('./routes/displayjob'))
 
 app.get('/', (req, res) => {
   res.send('Grads On Hire')

@@ -1,7 +1,7 @@
 // employerRoutes.js
 const express = require('express');
 const router = express.Router();
-const Employer = require('../models/Employer');
+const Employer = require('../models/employer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchemployer = require("../middleware/fetchemployer");

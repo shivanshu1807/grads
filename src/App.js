@@ -7,6 +7,7 @@ import EmployerLogin from './components/EmployerLogin';
 import EmployerSignup from './components/EmployerSignup';
 import EmployerDetails from './components/EmployerDetails';
 import EmployeeDetails from './components/EmployeeDetails';
+import DisplayJobs from './components/DisplayJobs';
 import Home from './components/Home';
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/getemployeedetails" element={<EmployeeDetails />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
+            <Route path="/showjobs" element={<DisplayJobs />} />
             </Routes>
         </div>
       </Router>

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require("../middleware/fetchuser");
@@ -99,7 +99,5 @@ router.post('/login', [
             res.status(500).send("Internal server error");
         }
     })
-
-module.exports = router
 
 module.exports = router
