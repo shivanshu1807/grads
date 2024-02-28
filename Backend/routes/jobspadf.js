@@ -12,7 +12,7 @@ router.post('/addjob', fetchemployer, [
   body('state', 'Enter a valid state name').isLength({ min: 3 }),
   body('city', 'Enter a valid city name').isLength({ min: 3 }),
   body('address', 'Enter a valid phone number'),
-  body('description', 'Enter a valid company name').isLength({ min: 20 }),
+  body('description', 'Enter a valid company name').isLength({ min: 3 }),
   body('requirements', 'Enter a valid pincode').isLength({ min: 10 }),
 ], async (req, res) => {
   try {

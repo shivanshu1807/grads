@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
   const [jobData, setJobData] = useState({
@@ -12,25 +13,52 @@ const AddJob = () => {
     requirements: '',
   });
 
+  let navigate = useNavigate();
+
   const handleChange = (e) => {
     setJobData({ ...jobData, [e.target.name]: e.target.value });
   };
 
-  const handleAddJob = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/api/auth/addjob', jobData, {
+  // const handleAddJob = async () => {
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     const response = await axios.post('http://localhost:5000/api/auth/addjob', jobData, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'auth-token': token,
+  //       },
+  //     });
+  //     console.log('Job added successfully:', response.data);
+  //     // You can redirect or update state as needed after adding a job
+  //   } catch (error) {
+  //     console.error('Error adding job:', error);
+  //   }
+  // };
+
+  const handleAddJob = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    const { title, company, state, city, address, description, requirements } = jobData;
+
+    const response = await fetch("http://localhost:5000/api/auth/addjob", {
+        method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'auth-token': token,
+            'Content-Type': 'application/json',
+            'auth-token': token,
         },
-      });
-      console.log('Job added successfully:', response.data);
-      // You can redirect or update state as needed after adding a job
-    } catch (error) {
-      console.error('Error adding job:', error);
-    }
-  };
+        body: JSON.stringify({ title, company, state, city, address, description, requirements })
+    });
+
+    const json = await response.json();
+    console.log(json);
+
+    // if (json.success) {
+    //     // Save the auth token and redirect
+    //     localStorage.setItem('token', json.authtoken);
+    //     localStorage.setItem('userType', 'employer');
+    //     navigate("/");
+    // }
+}
 
   return (
     <div>
