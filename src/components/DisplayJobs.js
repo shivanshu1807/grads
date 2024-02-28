@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const AllJobs = () => {
@@ -41,8 +42,12 @@ const AllJobs = () => {
             <strong>Description:</strong> {job.description} <br />
             <strong>Requirements:</strong> {job.requirements.join(', ')} <br />
             <strong>Posted By:</strong> {job.employer.name} (Employer ID: {job.employer._id}) <br />
+            <Link className="btn btn-primary mx-2" to="/Applyjobs" role="button">
+                Apply
+              </Link>
           </li>
         ))}
+        
       </ul>
     </div>
   );
