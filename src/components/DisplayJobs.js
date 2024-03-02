@@ -93,27 +93,26 @@ const AllJobs = () => {
         <p>Loading...</p>
       ) : (
         <ul>
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..."/>
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <Link to="/Applyjobs" className="btn btn-primary">Apply</Link>
-              </div>
-          </div>
           {jobs.map((job) => (
-            <li key={job._id}>
-              <strong>Title:</strong> {job.title} <br />
-              <strong>Company:</strong> {job.company} <br />
-              <strong>Location:</strong> {job.state}, {job.city} <br />
-              <strong>Address:</strong> {job.address} <br />
-              <strong>Description:</strong> {job.description} <br />
-              <strong>Requirements:</strong> {job.requirements.join(', ')} <br />
-              <strong>Posted By:</strong> {job.employer.name} (Employer ID: {job.employer._id}) <br />
-              <Link className="btn btn-primary mx-2" to="/Applyjobs" role="button">
-                Apply
-              </Link>
-            </li>
+            <div key={job._id}>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">{job.title}</h5>
+                  <p class="text-muted">{job.description}</p>
+                  <div class="row btnrow my-4">
+                    <div class="col-4 col-md-3"><button type="button" class="btn btn-outline-success btn-sm">Full Time</button></div>
+                    <div class="col-4 col-md-3"><button type="button" class="btn btn-outline-primary btn-sm" >Min. 1 year</button></div>
+                  </div>
+                  <div class="row btnrow my-4">
+                    <div class="col-4 col-md-3">Location : {job.city}, {job.state}</div>
+                    <div class="col-4 col-md-3">Address : {job.address}</div>
+                    <div class="col-4 col-md-3">Skills : {job.requirements.join(', ')}</div>
+                    <div class="col-4 col-md-3">Posted By : {job.employer.name} (Employer ID: {job.employer._id})</div>
+                  </div>
+                  <Link to="/Applyjobs" className="btn btn-primary">Apply</Link>
+                </div>
+              </div>
+            </div>
           ))}
         </ul>
       )}
