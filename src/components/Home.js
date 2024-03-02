@@ -1,9 +1,10 @@
 import React from 'react'
+import AllJobs from './DisplayJobs'
 
 function Home() {
   return (
     <div>
-      Home
+      <AllJobs/>
     </div>
   )
 }

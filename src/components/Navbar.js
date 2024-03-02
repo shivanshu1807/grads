@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import './styles/navbar.css'
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -8,22 +9,22 @@ const Navbar = () => {
     navigate('/');
   };
   useEffect(() => {
-    if(localStorage.getItem('token')){
-        console.log('Token exists');
-        
+    if (localStorage.getItem('token')) {
+      console.log('Token exists');
+
     }
-    else{
-        console.log('Token missing, navigating to login');
-        navigate("/");
+    else {
+      console.log('Token missing, navigating to login');
+      navigate("/");
     }
     // eslint-disable-next-line
-}, [])
+  }, [])
   let location = useLocation();
   const isEmployeeLoggedIn = localStorage.getItem('token') && localStorage.getItem('userType') === 'employee';
   const isEmployerLoggedIn = localStorage.getItem('token') && localStorage.getItem('userType') === 'employer';
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Grads On Hire
@@ -65,7 +66,7 @@ const Navbar = () => {
               <button type="button" className="btn btn-primary dropdown-toggle mx-1" data-bs-toggle="dropdown" aria-expanded="false">
                 Action
               </button>
-              <li className="nav-item dropdown">
+              <div className="nav-item dropdown">
                 <ul className="dropdown-menu" aria-labelledby="employeeDropdown">
                   <li>
                     <Link className="dropdown-item" to="/getemployeedetails">
@@ -73,7 +74,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    
+
                     <Link className="dropdown-item" to="/showjobs">
                       All Jobs
                     </Link>
@@ -92,43 +93,43 @@ const Navbar = () => {
                     </Link>
                   </li>
                 </ul>
-              </li>
+              </div>
             </div>
           )}
 
           {isEmployerLoggedIn && (
             <div className="btn-group">
-            <button type="button" className="btn btn-primary dropdown-toggle mx-1" data-bs-toggle="dropdown" aria-expanded="false">
-              Action
-            </button>
-            <li className="nav-item dropdown">
-              <ul className="dropdown-menu" aria-labelledby="employerDropdown">
-                <li>
-                  <Link className="dropdown-item" to="/getemployerdetails">
-                    My Account
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/newjob">
-                    New Job
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="#">
-                    Something else here
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="#">
-                    Separated link
-                  </Link>
-                </li>
-              </ul>
-            </li>
-          </div>
+              <button type="button" className="btn btn-primary dropdown-toggle mx-1" data-bs-toggle="dropdown" aria-expanded="false">
+                Action
+              </button>
+              <li className="nav-item dropdown">
+                <ul className="dropdown-menu" aria-labelledby="employerDropdown">
+                  <li>
+                    <Link className="dropdown-item" to="/getemployerdetails">
+                      My Account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/newjob">
+                      New Job
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="#">
+                      Something else here
+                    </Link>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="#">
+                      Separated link
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </div>
           )}
 
           {!localStorage.getItem('token') ? (

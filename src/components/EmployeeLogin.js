@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import './styles/employeelogin.css'
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password: ""}) 
@@ -32,7 +33,8 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <>
+        <body>
             <form  onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
@@ -46,7 +48,8 @@ const Login = (props) => {
 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-        </div>
+            </body>
+        </>
     )
 }
 

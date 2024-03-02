@@ -3,7 +3,7 @@ const router = express.Router();
 const Job = require('../models/Jobs');
 const fetchuser = require('../middleware/fetchuser');
 
-router.get('/disjob', fetchuser, async (req, res) => {
+router.get('/disjob', async (req, res) => {
   try {
     // Fetch all jobs from the database
     const allJobs = await Job.find().populate('employer', 'name email');

@@ -71,8 +71,7 @@ const AllJobs = () => {
 
         const response = await axios.get('http://localhost:5000/api/auth/disjob', {
           headers: {
-            'Content-Type': 'application/json',
-            'auth-token': token,
+            'Content-Type': 'application/json'
           },
         });
 
