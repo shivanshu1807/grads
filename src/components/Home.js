@@ -4,7 +4,13 @@ import AllJobs from './DisplayJobs'
 function Home() {
   return (
     <div>
-      <AllJobs/>
+      <fieldset>
+        <form className="d-flex">
+          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </fieldset>
+      <AllJobs />
     </div>
   )
 }
